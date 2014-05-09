@@ -1,0 +1,55 @@
+
+<?php $__env->startSection('title'); ?>
+Event Volunteering
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<style type="text/css">
+table td{
+  border:none;
+}
+</style>
+
+<link rel="stylesheet" type="text/css" href="<?php echo asset('css/tablestyle.css'); ?>">
+
+<div class="tablediv">
+
+<div class="events" style="margin-top:50px;">
+            <table  style="width:86%;margin:auto">
+              <thead>
+            	<tr>
+            	<th style="font-size:15px;">Title</th>
+            	<th style="font-size:15px;">Location</th>
+            	<th style="font-size:15px;">Address</th>
+            	<th style="font-size:15px;">Event Date</th>
+            	<th style="font-size:15px;">Event Timings</th>
+            	<th style="font-size:15px;">Description</th>
+            	<th style="font-size:15px;">No.Volunteers Enrolled</th>
+            </tr>
+            </thead>
+            <tbody>
+            	<?php foreach($events as $event): ?>
+           	<tr class="even"><?php $img=$event['image'];	
+                  $image = 'data:image/jpeg;base64,' . base64_encode($img);?>
+            		<td style="font-size:15px;"><?php echo $event['title']; ?></td>
+            		<td><?php echo $event['location']; ?></td>
+            		<td><?php echo $event['address']; ?> <br> <img src="<?php echo $image?>" width="150px" height="100px" style="box-shadow: 5px 5px 5px #888888;"/ ></td>
+            		<td><?php echo $event['start_date']; ?></td>
+            		<td><?php echo $event['start_time']; ?> to <br><?php echo $event['end_time']; ?></td>
+            		<td><?php echo $event['description']; ?></td>
+            		<td><p style="font-sixe:15px;"><?php echo count($event->volunteer); ?> </p> <a href="<?php echo URL::route('event-volunteer',$event['id']); ?>"><img src="<?php echo asset('images/vol.jpg'); ?>" style="width:50px;height:50px;"><br><br><p style="color:green">I want to volunteer !</p></a> </td>
+
+           	</tr>
+
+            	<?php endforeach; ?>
+              </tbody>
+            </table>
+
+             </div>
+
+
+</div>	
+ 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

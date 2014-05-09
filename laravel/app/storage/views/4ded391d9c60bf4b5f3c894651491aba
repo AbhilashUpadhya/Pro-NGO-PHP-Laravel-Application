@@ -1,0 +1,26 @@
+<?php $__env->startSection('title'); ?>
+Checkout
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="container_12">
+<form action="/checkout" method="POST">
+	<select name="amount">
+  	<option value="3000">3000</option>
+  	<option value="5000">5000</option>
+  </select>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<?php echo Config::get('stripe.publishable_key'); ?>"
+    data-amount=""
+    data-name="Donation Procedure"
+    data-description="Donate for one child."
+    data-image="<?php echo asset('images/donate_icon.jpg'); ?>">
+  </script>
+
+  
+ <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"/>
+</form>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

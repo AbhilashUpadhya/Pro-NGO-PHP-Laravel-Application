@@ -1,0 +1,64 @@
+
+<?php
+ /*
+require "C:/wamp/www/laravel/vendor/twilio/sdk/Services/Twilio.php";
+ 
+// set your AccountSid and AuthToken from www.twilio.com/user/account
+$AccountSid = "ACb5197a428c52d31faab1fe79531c87c0";
+$AuthToken = "37e2197bf4886d5746c1d63e4ff41042";
+ 
+$client = new Services_Twilio($AccountSid, $AuthToken);
+ 
+$sms = $client->account->sms_messages->create(
+    "8623247293", // From this number
+    "+918147286765", // To this number
+    "Test message!"
+);
+ 
+// Display a confirmation message on the screen
+echo "Sent message {$sms->sid}";
+
+*/
+
+
+
+
+include_once("ViaNettSMS.php"); 
+ 
+// Declare variables. 
+$Username = "vegetaabhishek@gmail.com"; 
+$Password = "cr6lx"; 
+$MsgSender = "4560991000"; 
+$DestinationAddress = "+919916816008"; 
+$Message = "Hello, XYZ Foundation whole heartedly thank you for your support. "; 
+ 
+// Create ViaNettSMS object with params $Username and $Password 
+$ViaNettSMS = new ViaNettSMS($Username, $Password); 
+try 
+{ 
+    // Send SMS through the HTTP API 
+    $Result = $ViaNettSMS->SendSMS($MsgSender, $DestinationAddress, $Message); 
+    // Check result object returned and give response to end user according to success or not. 
+    if ($Result->Success == true) 
+        $Message = "Message successfully sent!"; 
+    else 
+        $Message = "Error occured while sending SMS<br />Errorcode: " . $Result->ErrorCode . "<br />Errormessage: " . $Result->ErrorMessage; 
+} 
+catch (Exception $e) 
+{ 
+    //Error occured while connecting to server. 
+    $Message = $e->getMessage(); 
+} 
+ 
+?> 
+ 
+<html> 
+    <head> 
+        <title>ViaNettSMS Example</title> 
+    </head> 
+    <body> 
+<?php 
+echo "          <p><strong>SMS Result</strong><br />Status: $Message</p>"; 
+?> 
+    </body> 
+</html> 

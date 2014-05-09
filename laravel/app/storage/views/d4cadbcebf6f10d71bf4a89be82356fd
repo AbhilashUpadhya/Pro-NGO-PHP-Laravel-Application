@@ -1,0 +1,66 @@
+<?php $__env->startSection('title'); ?>
+Sign Up
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<style type="text/css">
+#thisform{
+
+	box-shadow: 5px 5px 5px #888888;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="<?php echo asset('css/custom.css'); ?>">
+<br><br>
+
+<?php echo Form::open(array(
+	'url' => '/account/create/',
+	'class' => 'basic-grey',
+	'id' => 'thisform'
+)); ?>
+<h1>Sign Up
+        <span>Please fill with proper credentials.</span>
+</h1>
+<div class="field">
+<?php echo Form::label('email','Email : '); ?>
+<?php echo Form::text('email'); ?>
+<?php if($errors->has('email')): ?>
+<br>
+<?php echo $errors->first('email'); ?>
+<?php endif; ?>
+</div>
+
+<div class="field">
+<?php echo Form::label('username','Username : '); ?>
+<?php echo Form::text('username'); ?>
+<?php if($errors->has('username')): ?>
+<br>
+<?php echo $errors->first('username'); ?>
+<?php endif; ?>
+</div>
+
+<div class="field">
+<?php echo Form::label('password','Password : '); ?>
+<?php echo Form::password('password'); ?>
+<?php if($errors->has('password')): ?>
+<br>
+<?php echo $errors->first('password'); ?>
+<?php endif; ?>
+</div>
+
+<div class="field">
+<?php echo Form::label('password_again','Password again :  '); ?>
+<?php echo Form::password('password_again'); ?>
+<?php if($errors->has('password_again')): ?>
+<br>
+<?php echo $errors->first('password_again'); ?>
+<?php endif; ?>
+</div>
+<?php echo Form::submit('Create new account',array(
+	'class' => 'button'
+)); ?>
+<?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

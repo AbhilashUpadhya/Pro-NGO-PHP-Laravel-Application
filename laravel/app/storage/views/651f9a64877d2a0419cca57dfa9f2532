@@ -1,0 +1,42 @@
+
+
+<div class="grid_3">
+                    <h2>Upcoming Events</h2>
+                    <ul class="list">
+                        <li>
+                            <time datetime="2014-01-01">29<span>Jan</span></time>
+                            <div class="extra_wrapper">
+                                <div class="title col2"><a href="#">Vivamuagna</a></div>
+                                amus at magn
+                                malesuada fauc
+                            </div>
+                        </li>
+                        <li>
+                            <time datetime="2014-01-01">02<span>Feb</span></time>
+                            <div class="extra_wrapper">
+                                <div class="title col2"><a href="#">Dereamuagne</a></div>
+                                amus at magn
+                                malesuada faut
+                            </div>
+                        </li>
+                        <li>
+                            <time datetime="2014-01-01">20<span>Feb</span></time>
+                            <div class="extra_wrapper">
+                                <div class="title col2"><a href="#">Hovamuagrt</a></div>
+                                emus at mago malesuada fau
+                            </div>
+                        </li>
+                        <li>
+                            <time datetime="2014-01-01">05<span>Mar</span></time>
+                            <div class="extra_wrapper">
+                                <div class="title col2"><a href="#">Meloamuar</a></div>
+                                ferus at magne malesuada faui
+                            </div>
+                        </li>
+                    </ul>
+                    <blockquote class="bq1">
+                        <div class="title">Testimonials</div>
+                        <p>A fantastic bunch of like minded people working for a good cause.</p>
+                        <div class="col2">Abhilash Upadhya</div>
+                    </blockquote>
+                </div>

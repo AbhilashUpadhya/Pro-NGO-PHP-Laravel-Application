@@ -1,0 +1,23 @@
+
+<?php $__env->startSection('title'); ?>
+Volunteer
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="container_12">
+                <div class="grid_6" style="margin-top:20px;">
+                   <?php echo HTML::link('/volunteer/type1','Weekend Volunteering.'); ?>
+                   <p>Spend a few hours of your weekend to bring the change ..</p>
+                   <div class="clear"></div>
+                </div>
+                <div class="grid_5 prefix_1" style="margin-top:20px;">
+                    
+                <?php echo HTML::link('/volunteer/type2','Event Based Volunteering.'); ?>   
+                <p>Volunteer for a perticular events.</p>
+               
+                    
+                </div>
+            </div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

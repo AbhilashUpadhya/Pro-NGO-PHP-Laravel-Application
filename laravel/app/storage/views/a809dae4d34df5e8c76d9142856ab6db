@@ -1,0 +1,408 @@
+
+<?php $__env->startSection('title'); ?>
+Baseview
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo asset('css/custom.css'); ?>">
+<script>
+$(document).ready(function(){
+  $(".ecsheader").click(function(){
+    $(".ecsdonors").slideToggle("slow");
+  });
+
+  $(".type1header").click(function(){
+    $(".type1donors").slideToggle("slow");
+  });
+
+  $(".type3header").click(function(){
+    $(".type3donors").slideToggle("slow");
+  });
+
+   $(".type2header").click(function(){
+    $(".type2donors").slideToggle("slow");
+  });
+
+    $(".eventheader").click(function(){
+    $(".events").slideToggle("slow");
+  });
+
+     $(".addeventheader").click(function(){
+    $(".addevent").slideToggle("slow");
+  });
+});
+</script>
+
+<style>
+
+.ecsheader,.type1header,.type2header,.eventheader,.addeventheader,.type3header{
+border: 2px solid rgba(230, 198, 135, 0.57);
+
+border-radius:20px;
+box-shadow: 5px 4px 5px #888888;
+padding:0px;
+width:850px;
+color:green;
+margin-left:auto;
+margin-right: auto;
+margin-top: 60px;
+}
+.ecsdonors,.type1donors,.type2donors,.events,.addevent,.type3donors{
+
+ display:none;
+ border:2px solid rgba(230, 198, 135, 0.57);
+ border-radius:20px;
+padding:0px;
+width:850px;
+color:green;
+margin:auto;
+
+}
+#ecstable,#eventtable,#type2table,#type3table{
+
+/*border:1px solid black;
+border-radius:20px;*/
+
+width:850px;
+}
+
+tr,th{
+	/*border:1px ridge grey;*/
+    border-radius:20px;
+	padding: 2px;
+
+}
+table td{
+	border: 1px solid rgb(223, 219, 198);
+    border-radius:20px;
+	padding :5px;
+	text-align:center;
+
+}
+
+span{
+    position: relative;
+}
+</style>
+
+<div class="container_12">
+             <
+             <div class="ecsheader">
+              <p style="text-align:center;color: rgb(83, 37, 39); font-size: 16px;">View all ECS Donors</p>
+             </div>
+             <div class="ecsdonors">
+             	<table id="ecstable">
+             		<tr>
+             			<th>Name</th>
+             			<th>Surname</th>
+             			<th>Email</th>
+             			<th> Postal Address</th>
+             			<th>Pin Code</th>
+
+             		</tr>
+             	<?php foreach($ecsdonors as $donor): ?>
+             	
+             		<tr>
+             			<td><?php echo $donor['first_name']; ?></td>
+             			<td><?php echo $donor['surname']; ?></td>
+             			<td><?php echo $donor->user['email']; ?></td>
+             			<td><?php echo $donor['address']; ?></td>
+             			<td><?php echo $donor['pincode']; ?></td>
+             		</tr>
+             	
+             	<?php endforeach; ?>
+             	</table>
+             </div>
+
+             <div class="type1header">
+             	<p style="text-align:center;color: rgb(83, 37, 39); font-size: 16px;">View All Other Donors.</p>
+             </div>
+
+             <div class="type1donors">
+             	
+                <?php   Session::put('key3','val');
+            ?>
+                <table id="type2table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Donations</th>
+                        <th>Other</th>
+                        <th>comments</th>
+                        <th>Date</th>
+                        <th>Mail</th>
+                        
+
+                    </tr>
+                <?php foreach($otherdonors as $donor): ?>
+                
+                    <tr>
+                        <td><?php echo $donor->user['username']; ?></td>
+                        <td><?php echo $donor['interest']; ?></td>
+                        <td><?php echo $donor['other']; ?></td>
+                        <td><?php echo $donor['comment']; ?></td>
+                        
+                        <td><?php echo $donor['date']; ?></td>
+                        <td><?php echo $donor->user['email']; ?><br> 
+                        <a href="<?php echo URL::route('mailtodonor', $donor->user['email'] ); ?>" target="_blank" style="color:blue;"> Send Mail!</a>
+                        </td>
+                    </tr>
+                
+                <?php endforeach; ?>
+                </table>
+
+             </div>
+
+
+             <div class="type2header">
+             	<p style="text-align:center;color: rgb(83, 37, 39); font-size: 16px;">View all One Time Donors.</p>
+             </div>
+
+             <div class="type2donors">
+
+                <?php   Session::put('key2','val');
+            ?>
+             	<table id="type2table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Amount</th>
+                        <th> Postal Address</th>
+                        <th>Pin Code</th>
+                        <th>Date</th>
+                        <th>Mail</th>
+
+                    </tr>
+                <?php foreach($type2donors as $donor): ?>
+                
+                    <tr>
+                        <td><?php echo $donor['first_name']; ?></td>
+                        <td><?php echo $donor['surname']; ?></td>
+                        <td><?php echo $donor['amount']; ?></td>
+                        <td><?php echo $donor['address']; ?></td>
+                        <td><?php echo $donor['pincode']; ?></td>
+                        <td><?php echo $donor['date']; ?></td>
+                        <td><?php echo $donor->user['email']; ?><br> 
+                        <a href="<?php echo URL::route('mailtodonor', $donor->user['email'] ); ?>" target="_blank" style="color:blue;"> Send Mail!</a>
+                        </td>
+                    </tr>
+                
+                <?php endforeach; ?>
+                </table>
+
+             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             <div class="type3header">
+                <p style="text-align:center;color: rgb(83, 37, 39); font-size: 16px;">View All Weekend  Volunteers.</p>
+             </div>
+
+             <div class="type3donors">
+                
+               
+                <table id="type3table">
+                    <tr>
+                        <th>Email</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>gender</th>
+                        <th>Date</th>
+                        <th>Interests</th>
+                        <th>phone no</th>
+                        
+
+                    </tr>
+                <?php foreach($weekendvols as $vols): ?>
+                
+                    <tr>
+                        <td><?php echo $vols->user['email']; ?></td>
+                        <td><?php echo $vols['name']; ?></td>
+                        <td><?php echo $vols['category']; ?></td>
+                        <td><?php echo $vols['gender']; ?></td>
+                        
+                        <td><?php echo $vols['date']; ?></td>
+                        <td><?php echo $vols['interest']; ?></td>
+                        <td><?php echo $vols['phone_no']; ?></td>
+                    </tr>
+                
+                <?php endforeach; ?>
+                </table>
+
+             </div>
+
+
+
+
+
+
+
+
+
+             <div class="eventheader">
+             <p style="text-align:center;color: rgb(83, 37, 39); font-size: 16px;">View All Events</p>
+             </div>
+
+             <div class="events">
+            <?php   Session::put('key1','val');
+            ?>
+            <table id="eventtable">
+            	<tr>
+            	<th>Title</th>
+            	<th>Location</th>
+            	<th>Address</th>
+            	<th>Date</th>
+            	<th>Timings</th>
+            	<th>No.Volunteers</th>
+            </tr>
+            	<?php foreach($events as $event): ?>
+            	<tr>
+            		<td><?php echo $event['title']; ?></td>
+
+            		<td><?php echo $event['location']; ?></td>
+            		<td><?php echo $event['address']; ?></td>
+            		<td><?php echo $event['start_date']; ?></td>
+            		<td><?php echo $event['start_time']; ?> to <?php echo $event['end_time']; ?></td>
+            		<td><?php echo count($event->volunteer); ?>
+            			<?php 
+                        $str="";
+                          foreach($event->volunteer as $vol){
+                                $str=$str.','.$vol['email'];
+                          }
+                          
+                         
+                          ?><br>
+                         <a href="<?php echo URL::route('mailtovolunteer',$str); ?>" target="_blank" style="color:blue;">Mail them!</a>
+                          
+                        
+            		</td>
+
+            	</tr>
+            	<?php endforeach; ?>
+            </table>
+
+             </div>
+
+             <div class="addeventheader">
+             	<p style="text-align:center;color: rgb(83, 37, 39); font-size: 16px;">Add New Event</p>
+             </div>
+               
+             <div class="addevent">
+             	<?php echo Form::open(array('url'=>'/admin/event','files'=>true,'class' => 'basic-grey','style' => 'width:initial;margin:auto;')); ?>
+             <div class="field">
+                <?php echo Form::label('title','Title'); ?>
+                <?php echo Form::text('title','',array('maxlength'=>'50')); ?>
+                <?php if($errors->has('title')): ?>
+                <?php echo $errors->first('title'); ?>
+                <?php endif; ?>
+             </div>
+
+              <div class="field">
+                <?php echo Form::label('description','Event Description :'); ?>
+                <?php echo Form::textarea('description','',array('rows'=>'10','cols' => '15')); ?>
+                <?php if($errors->has('description')): ?>
+                <?php echo $errors->first('description'); ?>
+                <?php endif; ?>
+             </div>
+
+              <div class="field">
+                <?php echo Form::label('address','Address'); ?>
+                <?php echo Form::textarea('address','',array('rows'=>'10','cols' => '15')); ?>
+                <?php if($errors->has('address')): ?>
+                <?php echo $errors->first('address'); ?>
+                <?php endif; ?>
+
+             </div>
+
+              <div class="field">
+                <?php echo Form::label('location','Location'); ?>
+                <?php echo Form::text('location','',array('maxlength'=>'50')); ?>
+                <?php if($errors->has('location')): ?>
+                <?php echo $errors->first('location'); ?>
+                <?php endif; ?>
+
+             </div>
+
+              <div class="field">
+                <?php echo Form::label('pincode','Pincode'); ?>
+                <?php echo Form::text('pincode','',array('maxlength'=>'10')); ?>
+                <?php if($errors->has('pincode')): ?>
+                <?php echo $errors->first('pincode'); ?>
+                <?php endif; ?>
+
+             </div>
+
+              <div class="field">
+                    Start Date : <br>
+                <input type="date" name="start_date" value="2014-01-01">
+
+             </div>
+
+              <div class="field">
+                 End Date : <br>
+                <input type="date" name="end_date" value="2014-01-01">
+
+             </div>
+              
+
+              <div class="field">
+                <?php echo Form::label('start_time','Start Time'); ?>
+                <?php echo Form::text('start_time','',array('maxlength'=>'15')); ?>
+                <?php if($errors->has('start_time')): ?>
+                <?php echo $errors->first('start_time'); ?>
+                <?php endif; ?>
+
+             </div>
+
+              <div class="field">
+                <?php echo Form::label('end_time','End Time'); ?>
+                <?php echo Form::text('end_time','',array('maxlength'=>'15')); ?>
+                <?php if($errors->has('end_time')): ?>
+                <?php echo $errors->first('end_time'); ?>
+                <?php endif; ?>
+
+             </div>
+
+              <div class="field">
+                <?php echo Form::label('filename','Filename'); ?>
+                <?php echo Form::text('filename','',array('maxlength'=>'50')); ?>
+                <?php if($errors->has('filename')): ?>
+                <?php echo $errors->first('filename'); ?>
+                <?php endif; ?>
+
+             </div>
+              <br>
+             <div class="field">
+                <input type="file" name="image">
+             </div>
+             <br>
+             <div class="field">
+                <?php echo Form::submit('Add Event',array('class' => 'button')); ?>
+             </div>
+
+
+             <?php echo Form::close(); ?>
+             </div>
+             
+              
+
+
+            </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

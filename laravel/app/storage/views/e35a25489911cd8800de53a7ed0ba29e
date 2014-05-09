@@ -1,0 +1,30 @@
+<?php $__env->startSection('title'); ?>
+Forgot Password
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<style type="text/css">
+#thisform{
+
+	box-shadow: 5px 5px 5px #888888;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="<?php echo asset('css/custom.css'); ?>">
+<br><br>
+
+<?php echo Form::open(array('class' => 'basic-grey','id'=> 'thisform')); ?>
+
+<div class="field">
+
+<?php echo Form::label('email','Enter your Email : '); ?>
+<?php echo Form::text('email'); ?>
+<?php if($errors->has('email')): ?>
+<?php echo $errors->first('email'); ?>
+<?php endif; ?>
+
+</div>
+
+<?php echo Form::submit('Recover Password',array('class' => 'button')); ?>
+<?php echo Form::close(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

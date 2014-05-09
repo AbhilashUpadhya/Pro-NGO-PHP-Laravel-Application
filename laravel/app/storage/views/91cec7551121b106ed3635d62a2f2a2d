@@ -1,0 +1,53 @@
+
+
+<?php $__env->startSection('title'); ?>
+Change Password
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<style type="text/css">
+#thisform{
+
+	box-shadow: 5px 5px 5px #888888;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="<?php echo asset('css/custom.css'); ?>">
+<br><br>
+
+<?php echo Form::open(array('class'=> 'basic-grey','id'=> 'thisform')); ?>
+
+
+<div class ="field">
+<?php echo Form::label('old_password','Old Password : '); ?>
+<?php echo Form::password('old_password'); ?>
+<?php if($errors->has('old_password')): ?>
+<?php echo $errors->first('old_password'); ?>
+<?php endif; ?>
+</div>
+
+
+<div class ="field">
+<?php echo Form::label('password','New Password : '); ?>
+<?php echo Form::password('password'); ?>
+<?php if($errors->has('password')): ?>
+<?php echo $errors->first('password'); ?>
+<?php endif; ?>
+</div>
+
+
+<div class ="field">
+<?php echo Form::label('password_again','New Password Again : '); ?>
+<?php echo Form::password('password_again'); ?>
+<?php if($errors->has('password_agian')): ?>
+<?php echo $errors->first('old_password_again'); ?>
+<?php endif; ?>
+</div>
+
+<?php echo Form::submit('Change Password',array('class' => 'button')); ?>
+
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

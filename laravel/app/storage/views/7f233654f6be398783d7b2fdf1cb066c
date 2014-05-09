@@ -1,0 +1,23 @@
+
+<?php $__env->startSection('title'); ?>
+Thank You
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<style type="text/css">
+#thankyou{
+	box-shadow: 5px 4px 5px #888888; 
+}
+</style>
+<?php if(Session::has('success')): ?>
+<br><br>
+<h1 style="text-align:center;font-weight: normal;
+font-family: inherit;
+font-style: oblique;
+font-size: 24px;
+color: rgb(122, 122, 244);">Thank you for your support..!</h1><br><br>
+<img id="thankyou" src="<?php echo asset('images/thankyou.jpg'); ?>"/ style="margin-left:40%">
+<?php endif; ?>
+ <?php $__env->stopSection(); ?>
+ 
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

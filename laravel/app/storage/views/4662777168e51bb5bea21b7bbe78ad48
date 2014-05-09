@@ -1,0 +1,3 @@
+Hello <?php echo $username; ?><br /><br />
+Activate your account.<br />
+<?php echo $link; ?>

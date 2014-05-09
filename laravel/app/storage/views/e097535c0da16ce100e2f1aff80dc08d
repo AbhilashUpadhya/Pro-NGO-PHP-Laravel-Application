@@ -1,0 +1,52 @@
+
+
+<?php $__env->startSection('title'); ?>
+Thank you
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<?php if(Session::has('success')): ?>
+<h1 style="text-align:center;">Thank you for enrolling as a Volunteer.!  We look forward to see you soon..! </h1>
+
+
+
+
+<?php
+
+if(Session::has('success')) {
+
+$phone_no = Session::get('phone_no');	
+include_once("ViaNettSMS.php");
+
+// Declare variables.
+$Username = "abhilashupadhya94@gmail.com"; //abhivara@gmail.com
+$Password = "1gvv2"; //6auqy 
+$MsgSender = "+4560991000"; //+4560991000 
+$DestinationAddress = "+91".$phone_no;
+$Message = "Thank you for your donation.";
+
+// Create ViaNettSMS object with params $Username and $Password
+$ViaNettSMS = new ViaNettSMS($Username, $Password);
+try
+{
+	// Send SMS through the HTTP API
+	$Result = $ViaNettSMS->SendSMS($MsgSender, $DestinationAddress, $Message);
+	// Check result object returned and give response to end user according to success or not.
+	if ($Result->Success == true)
+		$Message = "Message successfully sent!";
+	else
+		$Message = "Error occured while sending SMS<br />Errorcode: " . $Result->ErrorCode . "<br />Errormessage: " . $Result->ErrorMessage;
+}
+catch (Exception $e)
+{
+	//Error occured while connecting to server.
+	$Message = $e->getMessage();
+}
+}
+?>
+
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+ 
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

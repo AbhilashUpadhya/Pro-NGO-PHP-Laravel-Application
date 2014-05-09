@@ -1,0 +1,41 @@
+
+<?php $__env->startSection('title'); ?>
+Payment
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('content'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo asset('css/custom.css'); ?>">
+<div id="mainwrapper">
+
+<div class="field">
+<p style="text-align-center;color:black;font-size:20px;">Alright, Last Step is to make donation.<br> We use <b>Stripe</b> service to accept payments. Kindly make the payment below.</p>
+</div><br>
+<div class="mainform">
+	<?php echo Form::open(); ?>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<?php echo Config::get('stripe.publishable_key'); ?>"
+    data-amount=""
+    data-name="Donation Procedure"
+    data-description="Donate for one child."
+    data-image="<?php echo asset('images/donate_icon.jpg'); ?>">
+  </script>
+
+<input type="hidden" name="first_name" value="<?php echo $data['first_name']; ?>">  
+<input type="hidden" name="surname" value="<?php echo $data['surname']; ?>">
+<input type="hidden" name="dob" value="<?php echo $data['dob']; ?>">
+<input type="hidden" name="gender" value="<?php echo $data['gender']; ?>">
+<input type="hidden" name="purpose" value="<?php echo $data['purpose']; ?>">
+<input type="hidden" name="occupation" value="<?php echo $data['occupation']; ?>">
+<input type="hidden" name="address" value="<?php echo $data['address']; ?>">
+<input type="hidden" name="pincode" value="<?php echo $data['pincode']; ?>">
+<input type="hidden" name="phone_no" value="<?php echo $data['phone_no']; ?>">
+<input type="hidden" name="amount" value="<?php echo $data['amount']; ?>">
+<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"/>
+
+ <?php echo Form::close(); ?>
+</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

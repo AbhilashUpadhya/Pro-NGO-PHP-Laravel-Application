@@ -1,0 +1,4 @@
+Dear <?php echo $username; ?> , your new password is <?php echo $password; ?><br ><br>
+...
+<br >
+to activate click here.. <?php echo $link; ?> 

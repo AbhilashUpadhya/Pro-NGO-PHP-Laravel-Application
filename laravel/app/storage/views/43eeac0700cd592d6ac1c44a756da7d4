@@ -1,0 +1,132 @@
+
+<?php $__env->startSection('content'); ?>
+
+<style type="text/css">
+span{
+
+	position: absolute;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="<?php echo asset('css/custom.css'); ?>">
+<div id="mainwrapper">
+
+<div style="height:30px;">
+<h2 style="padding:0px;">Enrollement Form For <?php echo $title; ?></h2>
+<br>
+</div>
+<?php echo Form::open(array('class'=>'basic-grey')); ?>
+<input type="hidden" name="id" value="<?php echo $id; ?>">
+<div class="field">
+<?php echo Form::label('fullname','Your Full Name :'); ?>
+<?php echo Form::text('fullname'); ?>
+<script >
+var f1 = new LiveValidation('fullname');
+f1.add( Validate.Presence );
+</script>
+<?php if($errors->has('fullname')): ?>
+<br>
+    <?php echo $errors->first('fullname'); ?>
+<?php endif; ?>
+</div>
+<br>
+<div class="field">
+<input type="radio" name="gender" value="M" />Male
+<input type="radio" name="gender" value="F" />Female
+<input type="radio" name="gender" value="O" />Other
+<?php if($errors->has('gender')): ?>
+<br>
+           <?php echo $errors->first('gender'); ?>
+
+      <?php endif; ?>
+</div>
+<br><br>
+<div class="field">
+<label for="dob"> Your Date Of Birth :<br>
+<input type="date" id="dob" name="dob" value="01-01-2014">
+</label>
+<?php if($errors->has('dob')): ?>
+<br>
+           <?php echo $errors->first('dob'); ?>
+ <?php endif; ?>
+</div>
+
+<div class="field">
+<?php echo Form::label('occupation','Your Occupation :'); ?>
+<?php echo Form::text('occupation'); ?>
+<script >
+var f1 = new LiveValidation('occupation');
+f1.add( Validate.Presence );
+</script>
+<?php if($errors->has('occupation')): ?>
+<br>
+           <?php echo $errors->first('occupation'); ?>
+      <?php endif; ?>
+
+</div>
+
+<div class="field">
+<?php echo Form::label('purpose','  Why do you like to volunteer ?'); ?>
+<?php echo Form::textarea('purpose','',array('id'=>'purpose')); ?>
+<script >
+var f1 = new LiveValidation('purpose');
+f1.add( Validate.Presence );
+</script>
+<?php if($errors->has('purpose')): ?>
+<br>
+           <?php echo $errors->first('purpose'); ?>
+      <?php endif; ?>
+</div>
+
+<div class="field">
+<?php echo Form::label('address','Your Address Please :'); ?>
+<?php echo Form::textarea('address'); ?>
+
+<script >
+var f1 = new LiveValidation('address');
+f1.add( Validate.Presence );
+</script>
+<?php if($errors->has('address')): ?>
+<br>
+           <?php echo $errors->first('address'); ?>
+      <?php endif; ?>
+</div>
+
+<div class="field">
+<?php echo Form::label('pincode','Area Pincode please :'); ?>
+<?php echo Form::text('pincode'); ?>
+<script >
+var f1 = new LiveValidation('pincode',{onlyOnSubmit: true });
+f1.add( Validate.Presence );
+f1.add( Validate.Length, { minimum: 6, maximum: 10 } );
+</script>
+<?php if($errors->has('pincode')): ?>
+<br>
+           <?php echo $errors->first('pincode'); ?>
+      <?php endif; ?>
+
+
+</div>
+
+<div class="field">
+<?php echo Form::label('phone_no','Your Contact Number :'); ?>
+<?php echo Form::text('phone_no'); ?>
+
+<script >
+var f1 = new LiveValidation('phone_no',{onlyOnSubmit: true });
+f1.add( Validate.Presence );
+f1.add( Validate.Numericality );
+f1.add( Validate.Length, { minimum: 8, maximum: 16} );
+</script>
+
+<?php if($errors->has('phone_no')): ?>
+<br>
+           <?php echo $errors->first('phone_no'); ?>
+      <?php endif; ?>
+</div>
+<?php echo Form::submit('Okay, I wish to volunteer',array('class'=>'button')); ?>
+
+<?php echo Form::close(); ?>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

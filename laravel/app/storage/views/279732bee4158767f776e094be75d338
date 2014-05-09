@@ -1,0 +1,14 @@
+<br ><br >
+<!--<?php if($gender=='M'||$gender=='O'): ?>
+$tag = "Sir";
+<?php else: ?>
+$tag = "Madam";
+<?php endif; ?>
+-->
+<?php $tag="aa";
+?>
+Hello <?php echo $tag; ?> ,
+
+<h2 style="text-align:center;">Greetings from XYZ to <?php echo $name; ?></h2>
+<br >....<br >
+<p> We thank you for enrolling for the ECS donotion.<br> We will send you the form to your postal address. Thanks again. <br > ...<br> ..</p>

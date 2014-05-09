@@ -1,0 +1,28 @@
+
+<?php $__env->startSection('title'); ?>
+Admin Login
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<?php echo Form::open(array('url'=>'/adminlogin')); ?>
+<div class="field">
+<?php echo Form::label('email','Email :'); ?>
+<?php echo Form::text('email'); ?>
+<?php if($errors->has('email')): ?>
+<?php echo $errors->first('email'); ?>
+<?php endif; ?>
+</div>
+<div class="field">
+<?php echo Form::label('password','Password : '); ?>
+<?php echo Form::password('password'); ?>
+<?php if($errors->has('password')): ?>
+<?php echo $errors->first('password'); ?>
+<?php endif; ?>
+</div>
+
+
+<?php echo Form::submit('Log In'); ?>
+<?php echo Form::close(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

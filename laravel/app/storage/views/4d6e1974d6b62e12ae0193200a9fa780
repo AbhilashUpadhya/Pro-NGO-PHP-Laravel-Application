@@ -1,0 +1,51 @@
+
+<?php $__env->startSection('title'); ?>
+Donate
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo asset('css/custom.css'); ?>">
+
+<div class="container_12">
+
+              <div id="mainwrapper">
+                  <!-- Image Caption 1 -->
+
+                      <div id="box-1" class="box " >
+                        <a href="<?php echo route('donate-type1'); ?>">
+                        <img id="image-1" src="<?php echo asset('images/sponsor.jpg'); ?> " />
+                          <span class="caption fade-caption">
+                            <p>Monthly Donation</p>
+                          </span>
+                          </a>
+                      </div>
+                          <div id="box-2" class="box" style="margin-top:100px;">
+                          <a href="<?php echo route('donate-type2'); ?>">
+                        <img id="image-1" src="<?php echo asset('images/sponsor1.jpg'); ?> "/>
+                          <span class="caption fade-caption">
+                            <p>One Time Donation</p>
+                          </span>
+                          </a>
+                      </div>
+              </div>
+  
+   <!--        
+                <div class="grid_6" style="margin-top:20px;">
+                   <?php echo HTML::link('/donate/type1','Donation Type One.'); ?>
+                   <p>Sponser a child. Monthly Sponsorship for a needy child.</p>
+                   <div class="clear"></div>
+                </div>
+                <div class="grid_5 prefix_1" style="margin-top:20px;">
+                    
+                <?php echo HTML::link('/donate/type2','Donation Type Two.'); ?>   
+                <p>Donate for the cause. One time donation.</p>
+               
+                    
+                </div> 
+               --> 
+</div>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
