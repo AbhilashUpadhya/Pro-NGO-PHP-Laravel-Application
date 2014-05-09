@@ -28,9 +28,9 @@ width: 300px;"><br><br>
 include_once("ViaNettSMS.php");
 
 // Declare variables.
-$Username = "abi.anvekar@gmail.com";
-$Password = "pbbqc";
-$MsgSender = "+918095996718";
+$Username = ""; //ViaNett Username
+$Password = ""; //Vianett Password
+$MsgSender = "";//sender Number.
 $DestinationAddress = "+91".$phone;
 $Message = "Thank you for enrolling as a Volunteer..!";
 

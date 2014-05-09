@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'abhilashupadhya94@gmail.com', 'name' => 'Auth'),
+	'from' => array('address' => 'YOUR GMAIL ID GOES HERE', 'name' => 'Auth'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'abhilashupadhya94@gmail.com',
+	'username' => 'YOUR GMAIL ID GOES HERE',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => '',
+	'password' => 'YOUR GMAIL PASSWORD GOES HERE',
 
 	/*
 	|--------------------------------------------------------------------------

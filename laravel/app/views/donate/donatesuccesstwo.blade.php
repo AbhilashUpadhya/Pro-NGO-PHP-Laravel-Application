@@ -32,9 +32,9 @@ $phone_no = Session::get('phone_no');
 include_once("ViaNettSMS.php");
 
 // Declare variables.
-$Username = "abi.anvekar@gmail.com"; //abhivara@gmail.com
-$Password = "pbbqc"; //6auqy 
-$MsgSender = "+918095996718"; //+4560991000 
+$Username = ""; //ViaNett Username
+$Password = ""; //Vianett Password
+$MsgSender = "";//sender Number.
 $DestinationAddress = "+91".$phone_no;
 $Message = "Thank you for your donation.";
 
