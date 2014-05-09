@@ -1,0 +1,313 @@
+@extends('layout.main')
+
+
+@section('title')
+
+Monthly Donation
+@endsection
+
+@section('content')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
+<script>
+$(document).ready(function(){
+  $("#topdivone").click(function(){
+    $("#mainform1").slideToggle("slow");
+  });
+
+  $("#topdivtwo").click(function(){
+    $("#mainform2").slideToggle("slow");
+  });
+});
+</script>
+
+<style>
+
+#pagediv{
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 500px;
+}
+
+#mainform1,#mainform2{
+	display: none;
+}
+
+
+span{
+	font-size: 10px;
+	position: absolute;
+	color: blue;
+}
+
+#topdivone{
+  text-align: center;
+
+border: 2px solid rgba(105, 157, 144, 0.48);
+box-shadow: 5px 4px 5px #888888;
+padding:0px;
+width:500px;
+color:green;
+margin-left:auto;
+margin-right: auto;
+margin-top: 60px;
+}
+
+
+
+#topdivtwo{
+border: 2px solid rgba(105, 157, 144, 0.48);
+box-shadow: 5px 4px 5px #888888;
+text-align: center;
+padding:0px;
+width:500px;
+color:green;
+margin-left:auto;
+margin-right: auto;
+margin-top: 60px;
+
+}
+
+#donateform1,#donateform2
+{
+  text-align: center;
+  border-radius:20px;
+border:2px solid rgba(105, 157, 144, 0.48);
+padding:0px;
+width:500px;
+color:green;
+margin:auto;
+}
+
+#step1{
+	padding: 0px;
+	position: relative;
+}
+
+#step2,#step3{
+
+position: relative;
+	display: none;
+	padding: 0px;
+}
+
+
+h3{
+text-align: center;
+padding: 0px;
+margin-top: 5px;
+}
+
+
+</style>
+
+
+<script >
+$(document).ready(function(){
+  $("#step1_next").click(function(){
+    $("#step1").hide();
+    $("#step2").show();
+  });
+
+   $("#step2_next").click(function(){
+    $("#step2").hide();
+    $("#step3").show();
+  });
+
+    $("#step2_back").click(function(){
+    $("#step2").hide();
+    $("#step1").show();
+  });
+
+     $("#step3_back").click(function(){
+    $("#step3").hide();
+    $("#step2").show();
+  });
+  
+});
+</script>
+
+<div id="pagediv">
+<div id="topdivone">
+<img src="{{asset('images/ecs.jpg')}}" width="100%" id="ecs ">
+</div>
+<div id="mainform1">
+{{Form::open(array('url'=>'donate/type1/first','id'=>'donateform1','class' => 'basic-grey'))}}
+							
+<div id="step1">
+
+<h3>What is ECS ? How Can it Help You ?</h3>
+<img src="{{asset('images/monthly_pledge.jpg')}}" width="200px" height="80px" />
+<br>
+<p style="text-align:center; ">ECS is a facility given by the RBI to us.</p>
+
+<br >
+<p style="text-align:center; ">
+All donations are exempted  from Tax under Section 80G(5) VI of Income Tax Act, 1961 <br ></p>
+<label>
+<button type="button" id="step1_next" class="button" style="margin-left:20px;">Proceed</button>
+</label>
+</div>
+
+<div id="step2"> 
+<h3>Enter your details please.<h3>
+<div class="field">
+{{Form::label('first_name','First Name :')}}
+<input type="text" name="first_name" id="first_name" />
+<script >
+var f1 = new LiveValidation('first_name');
+f1.add( Validate.Presence );
+</script>
+</div>
+
+
+<div class="field">
+{{Form::label('surname','Surname')}}
+{{Form::text('surname')}}
+
+</div>
+
+
+<div class="field">
+
+<input type="radio"  id="male" name="gender" value="M">Male
+<input type="radio"  id="female" name="gender" value="F">Female
+<input type="radio"  id="other" name="gender" value="O">Other
+<!--
+<label for="male">
+<input type="radio"  id="male" name="gender" value="M">
+Male</label>
+
+
+<label for="female">
+<input type="radio"  id="female" name="gender" value="F">
+Female</label>
+
+
+<label for="other">
+<input type="radio"  id="other" name="gender" value="O">
+Other</label>
+-->
+</div>
+
+<br>
+<div class="field">
+{{Form::label('occupation','Occupation : ')}}
+{{Form::text('occupation','',array('id'=>'occupation'))}}
+<script >
+var f1 = new LiveValidation('occupation');
+f1.add( Validate.Presence );
+</script>
+</div>
+
+<label>
+<button type="button" id="step2_back" class="button" >Back</button>
+<button type="button" id="step2_next" class="button" >Proceed</button>
+</label>
+</div>
+
+
+
+<div id="step3">
+	<h3>We will post an ECS form to the following address.</h3>
+   <div class="field">
+    {{Form :: label('address','Postal Address :')}}
+
+	{{Form::textarea('address','',array('id'=>'address'))}}
+
+	<script >
+var f1 = new LiveValidation('address');
+f1.add( Validate.Presence );
+</script>
+	</div>
+	<div class="field">
+	{{Form :: label('pincode','Pin Code :')}}
+	 {{Form::text('pincode','',array('id'=>'pincode'))}}
+	 <script >
+var f1 = new LiveValidation('pincode',{onlyOnSubmit: true });
+f1.add( Validate.Presence );
+f1.add( Validate.Length, { minimum: 6, maximum: 10} );
+</script>
+	</div>
+	<div class="field">
+	<p>To donate, please fill in the ECS form with your details and send it the below address</p>
+	
+	<strong>
+    #122 
+		7th main, 14th Cross,  <br>
+		XYZnagar
+		Bangalore-ZZ
+  </strong>  
+
+</div>
+<br><br>
+<div class="field">
+	{{Form :: label('comment','Your remarks/comments:')}}
+
+	{{Form::textarea('comment')}}
+</div>
+<button type="button" id="step3_back" class="button" >Back</button>
+{{Form::submit('Submit',array(
+    'class' => 'button'
+))}}
+
+</div>
+
+
+
+
+{{Form::close()}}
+</div>
+
+
+
+<div id="topdivtwo">
+<img src="{{asset('images/other_donations.jpg')}}" width="100%"/>
+</div>
+<div id="mainform2">
+{{Form::open(array('url' => '/donate/type1/second', 'id' => 'donateform2', 'class' => 'basic-grey' ))}}
+
+<div class="field">
+
+<h3 style="text-align:center; ">Not Quite Happy Donationg Money ? </h3>
+<h3 style="text-align:center;">We also accept the following donations.</h3>
+<div style="text-align:left;margin-left:40%;">
+<label for="uniforms"> 
+<input type="checkbox" name="od" id="uniforms" value="uniforms">Uniforms</label><br>
+<label for="school_kits"> 
+<input type="checkbox" name="od" id="school_kits" value ="school_kits">School Kits</label><br>
+<label for="clothes">
+<input type="checkbox" name="od" id="clothes" value ="clothes">Clothes</label><br>
+<label for="medicines">
+<input type="checkbox" name="od" id="medicines" value ="medicines">Medicines</label><br>
+<label for="old_computers">
+<input type="checkbox" name="od" id="old_computers" value ="old_computers">Old Computers</label><br>
+<label for="books">
+<input type="checkbox" name="od" id="books" value ="books">Books</label><br>
+<label for="sports_kits">
+<input type="checkbox" name="od" id="sports_kits" value ="sports_kits">Sports Kits</label><br>
+</div>
+
+
+</div> 
+
+<div class="field">
+{{Form::label('other','Any orther donations :')}}
+{{Form::text('other')}}
+
+</div>
+
+<div class="field">
+{{Form::label('comment','Would you like to convey any message to us ?')}}
+{{Form::textarea('comment')}}
+</div>
+<div class="field">
+<p>
+Further Details Will Be Mailed To You By Us.
+</p></div>
+{{Form::submit('I Like To Donate',array('class' => 'button' ))}}
+</form>
+</div>
+</div>
+
+@endsection
