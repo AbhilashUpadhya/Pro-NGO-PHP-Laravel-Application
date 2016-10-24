@@ -1,4 +1,3 @@
-NGOwebsite
+Pro NGO, A PHP Laravel web application
 ==========
-
-A website that any NGO could incorporate. Has Donation and Volunteering functionality along with admin functionality. Webite has been developed using Laravel 4.1, a PHP framework.
+The web application is aimed at helping any newly formed NGO to easily host events online, create a schedule for those events, and gather volunteers for these events by a simple registration process. The application also sends out email and mobile notifications to volunteers regarding any updates on the events. The web application also allows the NGOs to take various reports of their events and volunteers easily from our databases. Finally, the web application helps the NGOs to raise funds easily by providing a secure gateway for payments through credit cards.
